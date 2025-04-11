@@ -1,0 +1,11 @@
+# Activa la reescritura de URLs
+RewriteEngine On
+
+# Elimina "index" de la URL
+RewriteCond %{THE_REQUEST} /index(\.html|\.php)? [NC]
+RewriteRule ^(.*)index(\.html|\.php)?$ /$1 [L,R=301]
+
+# Asegura URLs amigables
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)\.html$ /$1 [L,R=301]
